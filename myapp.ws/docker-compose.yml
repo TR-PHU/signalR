@@ -1,0 +1,20 @@
+services:
+  signalr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: signalr
+    expose:
+       - "5000"
+ 
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "81:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - signalr
+    links:
+     - signalr
