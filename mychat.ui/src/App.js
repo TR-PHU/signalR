@@ -5,6 +5,8 @@ import Chat from './components/Chat';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const BASE_URL_WS = "https://localhost:44360";
+
 const App = () => {
   const [connection, setConnection] = useState();
   const [messages, setMessages] = useState([]);
@@ -13,7 +15,7 @@ const App = () => {
   const joinRoom = async (user, room) => {
     try {
       const connection = new HubConnectionBuilder()
-        .withUrl("http://localhost:80/chat")
+        .withUrl(`${BASE_URL_WS}/chat`)
         .configureLogging(LogLevel.Information)
         .build();
 
@@ -56,7 +58,7 @@ const App = () => {
   }
 
   return <div className='app'>
-    <h2>MyChat</h2>
+    <h2>Xích LôR</h2>
     <hr className='line' />
     {!connection
       ? <Lobby joinRoom={joinRoom} />
