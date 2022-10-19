@@ -1,1 +1,1 @@
-# ChatApp
+# Simple Chat Application Using SignalR
